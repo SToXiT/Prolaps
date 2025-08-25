@@ -1,0 +1,247 @@
+body, html {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  color: #fff;
+  background: #0fa8d2 !important;
+  min-height: 100vh;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+}
+
+header {
+  background: #23272a;
+  padding: 10px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.header-actions {
+  display: flex;
+  gap: 10px;
+}
+
+header h1 {
+  margin: 0;
+  font-size: 1.5em;
+}
+
+.edit-link, .logout-btn {
+  color: #fff;
+  background: #23272a;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 4px;
+  text-decoration: none;
+  cursor: pointer;
+  font-weight: bold;
+  border: 1px solid #444;
+  transition: background 0.2s, color 0.2s;
+}
+
+.edit-link:hover, .logout-btn:hover {
+  background: #444;
+  color: #0fa8d2;
+}
+
+#toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  background: #23272a;
+  padding: 10px 20px;
+  border-bottom: 1px solid #111;
+}
+
+#marker-type-selector {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+#marker-type-selector button {
+  padding: 6px 12px;
+  border: none;
+  border-radius: 4px;
+  font-weight: bold;
+  cursor: pointer;
+  outline: none;
+  border: 1px solid #444;
+  transition: background 0.2s, color 0.2s;
+  background: #23272a;
+  color: #fff;
+}
+
+#marker-type-selector button:hover, #marker-type-selector button:focus {
+  background: #444;
+  color: #0fa8d2;
+  outline: 2px solid #0fa8d2;
+}
+
+#copy-json-btn, #import-json-btn, #clear-json-btn,
+#createRouteBtn, #finishRouteBtn, #editRouteBtn, #finishEditBtn, #export-json-btn {
+  padding: 6px 12px;
+  border: none;
+  border-radius: 4px;
+  background: #23272a;
+  color: #fff;
+  font-weight: bold;
+  cursor: pointer;
+  border: 1px solid #444;
+  margin-right: 5px;
+  transition: background 0.2s, color 0.2s;
+}
+
+#copy-json-btn:hover, #import-json-btn:hover, #clear-json-btn:hover,
+#createRouteBtn:hover, #finishRouteBtn:hover, #editRouteBtn:hover, #finishEditBtn:hover, #export-json-btn:hover {
+  background: #444;
+  color: #0fa8d2;
+}
+
+#routesSelect {
+  border-radius: 4px;
+  border: 1px solid #444;
+  background: #23272a;
+  color: #fff;
+  font-weight: bold;
+  margin-right: 8px;
+  padding: 6px 8px;
+}
+
+#type-menu {
+  position: absolute;
+  top: 120px;
+  right: 40px;
+  background: rgba(34, 34, 34, 0.97);
+  color: #fff;
+  padding: 16px 18px 14px 18px;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px #0004;
+  z-index: 1002;
+  font-size: 15px;
+  line-height: 1.3;
+  min-width: 180px;
+  user-select: none;
+  border: 1px solid #444;
+}
+#type-menu label {
+  cursor: pointer;
+  font-size: 0.96em;
+  display: flex;
+  align-items: center;
+  margin-bottom: 6px;
+}
+#type-menu input[type=checkbox] {
+  accent-color: #0fa8d2;
+  margin-right: 7px;
+}
+#type-menu strong {
+  display: block;
+  margin-bottom: 2px;
+}
+
+#map {
+  flex: 1 1 0;
+  width: 100vw;
+  min-height: 100vh;
+  background: #0fa8d2 !important;
+  position: relative;
+  z-index: 1;
+  margin: 0;
+  padding: 0;
+}
+
+/* MODALE création/modification itinéraire et marker */
+#routeModal {
+  display: none;
+  position:fixed;
+  top:0;
+  left:0;
+  width:100vw;
+  height:100vh;
+  background:rgba(0,0,0,0.45);
+  z-index:10000;
+  align-items:center;
+  justify-content:center;
+}
+#routeModalForm {
+  background: #23272a;
+  padding: 28px 30px 22px 30px;
+  border-radius: 10px;
+  min-width: 250px;
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+  box-shadow: 0 2px 16px #111B;
+}
+#routeModal input[type="text"] {
+  background: #fff;
+  color: #222;
+  border-radius: 4px;
+  border: 1px solid #888;
+  padding: 7px;
+  font-size: 1.08em;
+  width: 95%;
+}
+#routeModal input[type="color"] {
+  outline:none;
+  border:1.5px solid #0fa8d2;
+  border-radius: 4px;
+  background:#fff;
+  width: 44px;
+  height: 32px;
+  vertical-align: middle;
+  margin-left: 8px;
+}
+#routeModal button {
+  padding: 7px 13px;
+  border-radius: 5px;
+  background: #0fa8d2;
+  color: #fff;
+  font-weight: bold;
+  border: none;
+  cursor:pointer;
+  margin-left:5px;
+  transition: background 0.2s;
+}
+#routeModal button:hover {
+  background: #23272a;
+}
+
+.route-label-marker span {
+  background: #fff !important;
+  color: #23272a !important;
+  border-radius: 8px;
+  border: 1px solid #bbb !important;
+  padding: 3px 10px !important;
+  font-weight: bold;
+  font-size: 13px !important;
+}
+
+.draggable-point-marker div {
+  box-shadow: 0 0 8px #2229;
+  background: #0fa8d2 !important;
+  border: 2px solid #fff !important;
+  border-radius: 8px !important;
+}
+
+.crosshair-cursor {
+  cursor: crosshair !important;
+}
+
+.circle-step-marker {
+  box-shadow: 0 0 4px #0fa8d2;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  background: #444;
+}
+::-webkit-scrollbar-thumb {
+  background: #0fa8d2;
+  border-radius: 8px;
+}

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>LSFD - Borne</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+</head>
+<body>
+  <header>
+    <h1>Édition des marqueurs</h1>
+    <div class="header-actions">
+      <a href="index.html" class="edit-link">Retour Carte</a>
+    </div>
+  </header>
+  <div class="instructions">
+    <div id="type-menu"></div>
+    <div id="marker-type-selector">
+      <button data-type="hydrant-red">Station</button>
+    <!--<button data-type="hydrant-yellow">Borne jaune</button>-->
+    <button data-type="firestation">Réparation</button>
+    <button data-type="hospital">Hôpital</button>
+    <button id="createRouteBtn">Création itinéraire</button>
+    <button id="finishRouteBtn">Fin itinéraire</button>
+    <select id="routesSelect"></select>
+    <button id="editRouteBtn">Éditer l’itinéraire</button>
+    <button id="finishEditBtn" style="display:none;">Fin édition</button>
+    <button id="export-json-btn">Copier JSON</button>
+    <button id="import-json-btn">Importer JSON</button>
+    <input type="file" id="import-json-file" style="display:none;">
+    <button id="clear-json-btn">Tout effacer</button>
+
+  </div>
+  <div id="map"></div>
+  <!-- Modale de saisie nom/couleur -->
+  <div id="routeModal" style="display:none;position:fixed;top:0;left:0;width:100vw;height:100vh;
+        background:rgba(0,0,0,0.5);z-index:1000;align-items:center;justify-content:center;">
+    <form id="routeModalForm" style="background:#fff;padding:24px;border-radius:10px;min-width:250px;display:flex;flex-direction:column;gap:1em;">
+      <label><b>Nom</b>
+        <input type="text" id="modalRouteName" required style="width:100%;" autocomplete="off"/>
+      </label>
+      <label><b>Couleur</b><br>
+        <input type="color" id="modalRouteColor" value="#ff0000"/>
+      </label>
+      <div style="text-align:right">
+        <button type="submit" id="modalRouteOK">Valider</button>
+        <button type="button" onclick="closeRouteModal()">Annuler</button>
+      </div>
+    </form>
+  </div>
+  <script>
+    function openRouteModal(initName, initColor, cb) {
+      document.getElementById('routeModal').style.display = "flex";
+      document.getElementById('modalRouteName').value = initName||"";
+      document.getElementById('modalRouteColor').value = initColor||"#ff0000";
+      document.getElementById('modalRouteName').focus();
+      window._routeModalCb = cb;
+    }
+    function closeRouteModal() {
+      document.getElementById('routeModal').style.display = "none";
+      window._routeModalCb = null;
+    }
+    document.getElementById('routeModalForm').onsubmit = function(e) {
+      e.preventDefault();
+      if(window._routeModalCb) window._routeModalCb(
+        document.getElementById('modalRouteName').value,
+        document.getElementById('modalRouteColor').value
+      );
+      closeRouteModal();
+    };
+  </script>  
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+  <script src="js/edit.js"></script>
+</body>
+</html>
