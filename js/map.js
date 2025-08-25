@@ -1,6 +1,6 @@
 // Icônes personnalisées
 const markerIcons = {
-  "hydrant-red": L.icon({ iconUrl: 'img/Station.png', iconSize: [10,10], iconAnchor: [5,5] }),
+  "hydrant-red": L.icon({ iconUrl: 'img/Station.png', iconSize: [18,28], iconAnchor: [9,28] }),
   "hydrant-yellow": L.icon({ iconUrl: 'img/marker-yellow.png', iconSize: [10,10], iconAnchor: [5,5] }),
   "firestation": L.icon({ iconUrl: 'img/reparation.png', iconSize: [17,30], iconAnchor: [8.5,30] }),
   "hospital": L.icon({ iconUrl: 'img/hopital.png', iconSize: [30,30], iconAnchor: [15,30] }),
@@ -101,3 +101,4 @@ async function initMap() {
 }
 
 initMap();
+
